@@ -25,10 +25,14 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 - [sangcahaya.id](https://sangcahaya.id)
 
+## Requirement
+
+- php >= v.7.4
+
 ## Instalation Setup
 
 - Clone
-- Create Database & COnfigure your .env
+- Create Database & C0nfigure your .env
 - php artisan migrate
 - php artisan db:seed --class=UserSeeder
 
