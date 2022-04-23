@@ -27,8 +27,10 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 
 ## Instalation Setup
 
-- On Development
-- On Progress
+- Clone
+- Create Database & COnfigure your .env
+- php artisan migrate
+- php artisan db:seed --class=UserSeeder
 
 ## Learning Laravel
 
