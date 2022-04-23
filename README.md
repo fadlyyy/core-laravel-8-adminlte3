@@ -1,6 +1,6 @@
 ## About Me
 
-Saya adalah seorang Supervisor programmer di PT Sintasi Inti Prestasi.
+Saya adalah seorang Supervisor programmer di PT Sintesa Inti Prestasi.
 karena kecintaan ku terhadap Template Stisla, Laravel, dan Livewire, maka terciptalah ini..
 
 Jangan lupa untuk mengunjungi blog ku
