@@ -14,7 +14,7 @@ Jangan lupa untuk mengunjungi blog ku
 ## Instalation Setup
 
 - Clone
-- Create Database & C0nfigure your .env
+- Create Database & Configure your .env
 - php artisan migrate
 - php artisan db:seed --class=UserSeeder
 
