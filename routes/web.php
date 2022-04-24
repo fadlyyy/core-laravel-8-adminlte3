@@ -19,9 +19,10 @@ use App\Http\Controllers\Login_controller;
 
 Route::get('/', function () {
     // return view('welcome');
-    return view('layouts.main', [
-        'title' => 'Blank Page | sangcahaya.id'
-    ]);
+    // return view('layouts.main', [
+    //     'title' => 'Blank Page | sangcahaya.id'
+    // ]);
+    return redirect('home');
 });
 
 Route::get('/login', [Login_controller::class, 'index'])->name('login');

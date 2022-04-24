@@ -20,8 +20,8 @@ class Login_controller extends Controller
         ]);
         $remember = $request->remember;
         // dd($remember);
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $remember)) {
-            // The user is being remembered...
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'is_active' => 1], $remember)) {
+            // Authentication was successful...
             return redirect('home');
         }
 
