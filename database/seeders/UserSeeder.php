@@ -17,7 +17,8 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Admin',
             'email' => 'admin@sangcahaya.id',
-            'password' => bcrypt('sangcahaya.id')
+            'password' => bcrypt('sangcahaya.id'),
+            'is_paten' => 1
         ]);
     }
 }
