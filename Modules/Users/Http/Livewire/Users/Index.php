@@ -6,6 +6,7 @@ use App\Models\User;
 use Livewire\Component;
 use App\Traits\MasterData;
 use Livewire\WithPagination;
+use Modules\Roles\Entities\Role;
 use Modules\Users\Http\Traits\UserTrait;
 use Modules\Roles\Http\Traits\PermissionTrait;
 
@@ -127,10 +128,12 @@ class Index extends Component
         $q = $this->search;
         $data = User::filter($q)->latest()->paginate($this->paging);
         $pagings = MasterData::list_pagings();
+        $roles = Role::active()->get();
 
         return view('users::livewire.users.index', compact(
             'data',
-            'pagings'
+            'pagings',
+            'roles'
         ))
             ->layout('layouts.main', [
                 'title' => 'Manage Users'

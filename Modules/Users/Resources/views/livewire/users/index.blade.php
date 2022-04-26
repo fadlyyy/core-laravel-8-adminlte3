@@ -40,6 +40,7 @@
                     <tbody>
                         <tr>
                             <th>ID</th>
+                            <th>Role</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Status</th>
@@ -48,6 +49,7 @@
                         @foreach ($data as $e => $dt)
                             <tr>
                                 <td>{{ $dt->id }}</td>
+                                <td>{{ $dt->role->name }}</td>
                                 <td>{{ $dt->name }}</td>
                                 <td>{{ $dt->email }}</td>
                                 <td>
@@ -67,8 +69,7 @@
                                     @if ($dt->is_paten != 1)
                                         <div class="dropdown d-inline">
                                             <button class="btn btn-primary dropdown-toggle" type="button"
-                                                id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 Action
                                             </button>
                                             <div class="dropdown-menu" x-placement="bottom-start"
@@ -131,6 +132,20 @@
                                         <input wire:model="forms.email" type="text" class="form-control"
                                             id="inputEmail4" placeholder="Email">
                                         @error('forms.email')
+                                            <span style="color: red;" class="error">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="role_id">Role</label>
+                                        <select class="form-control" wire:model="forms.role_id">
+                                            <option value="">Select Role</option>
+                                            @foreach ($roles as $rl)
+                                                <option value="{{ $rl->id }}">{{ $rl->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('forms.role_id')
                                             <span style="color: red;" class="error">{{ $message }}</span>
                                         @enderror
                                     </div>

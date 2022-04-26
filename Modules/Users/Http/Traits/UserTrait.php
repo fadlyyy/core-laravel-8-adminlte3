@@ -10,6 +10,7 @@ trait UserTrait
     {
         $a['name'] = '';
         $a['email'] = '';
+        $a['role_id'] = '';
 
         return $a;
     }
@@ -60,6 +61,7 @@ trait UserTrait
 
     public static function store_data($data, $id = null)
     {
+        // dd($data);
         if ($id) {
             // $data['password'] = bcrypt($data['password']);
 
@@ -82,7 +84,8 @@ trait UserTrait
 
         return [
             'name' => $dt->name,
-            'email' => $dt->email
+            'email' => $dt->email,
+            'role_id' => $dt->role_id
         ];
     }
 }
