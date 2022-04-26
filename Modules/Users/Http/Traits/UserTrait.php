@@ -63,7 +63,7 @@ trait UserTrait
         if ($id) {
             // $data['password'] = bcrypt($data['password']);
 
-            User::where('id', $id)->update($data);
+            User::find($id)->update($data);
         } else {
             $data['password'] = bcrypt('123');
 

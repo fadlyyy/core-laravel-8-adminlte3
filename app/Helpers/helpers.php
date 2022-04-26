@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
 function updateStatus(Model $model, $id)
@@ -13,4 +14,9 @@ function updateStatus(Model $model, $id)
         $dt->is_active = 1;
         $dt->save();
     }
+}
+
+function my_ids()
+{
+    return Auth::id();
 }

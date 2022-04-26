@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,9 @@
 |
 */
 
-Route::prefix('roles')->group(function() {
-    Route::get('/', 'RolesController@index');
+Route::middleware(['web', 'auth'])->group(function () {
+
+    Route::prefix('users')->group(function () {
+        Route::get('/roles', 'roles\index');
+    });
 });

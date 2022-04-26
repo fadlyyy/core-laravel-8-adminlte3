@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Traits\MasterData;
 use Livewire\WithPagination;
 use Modules\Users\Http\Traits\UserTrait;
+use Modules\Roles\Http\Traits\PermissionTrait;
 
 class Index extends Component
 {
@@ -22,6 +23,7 @@ class Index extends Component
         $this->paging = 25;
         $this->forms = UserTrait::firstForm();
         // dd($this->forms);
+
     }
 
     public function updatingSearch()

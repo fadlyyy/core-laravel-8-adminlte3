@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="../../index.html"
+                    <a href="{{ url('users/roles') }}"
                         class="nav-link {{ request()->segment(1) == 'users' && request()->segment(2) == 'roles' ? 'active' : '' }}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Manage Role</p>
