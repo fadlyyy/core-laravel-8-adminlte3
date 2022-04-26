@@ -27,6 +27,12 @@ class Index extends Component
         $this->permissions = $this->getAllTitlePermissions();
         $this->permissions = $this->getPermissionById($id);
 
+        $dt = Role::find($id);
+        if ($dt->is_paten == 1) {
+            $this->emit('pesanGagal', 'Sorry.. forbidden..');
+            return false;
+        }
+
         $this->id_edit = $id;
         $this->emit('modalManage', 'show');
     }
