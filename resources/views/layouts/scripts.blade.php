@@ -13,6 +13,16 @@
 
 @livewireScripts
 @yield('scripts')
+
+<script>
+    $(document).ready(function() {
+        $('#call-modal-contact').click(function(e) {
+            e.preventDefault();
+            $('#modalContact').appendTo('body').modal();
+        })
+    })
+</script>
+
 <script>
     document.addEventListener('livewire:load', () => {
 

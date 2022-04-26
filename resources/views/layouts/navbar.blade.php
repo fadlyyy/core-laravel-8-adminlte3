@@ -6,14 +6,14 @@
     <li class="nav-item d-none d-sm-inline-block">
         <a href="{{ url('/') }}" class="nav-link">Home</a>
     </li>
-    <li class="nav-item d-none d-sm-inline-block">
+    <li class="nav-item d-none d-sm-inline-block" id="call-modal-contact">
         <a href="#" class="nav-link">Contact</a>
     </li>
 </ul>
 
 <!-- Right navbar links -->
 <ul class="navbar-nav ml-auto">
-    <!-- Navbar Search -->
+    {{-- <!-- Navbar Search -->
     <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
             <i class="fas fa-search"></i>
@@ -123,7 +123,7 @@
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-    </li>
+    </li> --}}
     <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
             <i class="fas fa-expand-arrows-alt"></i>
@@ -135,3 +135,49 @@
         </a>
     </li>
 </ul>
+
+@section('content')
+    <div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="modal-notification"
+        aria-hidden="true">
+        <div class="modal-dialog modal-default modal-dialog-centered modal-" role="document">
+            <div class="modal-content bg-gradient-primary">
+
+                <div class="modal-header">
+                    <h6 class="modal-title" id="modal-title-notification">Contact Me..!!</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="py-3">
+                        <ol>
+                            <li>WA : <i>0896 0849 8550</i></li>
+                            <li>Blog : <i><a style="color: white" href="https://sangcahaya.id" target="_blank">My Blog,
+                                        sangcahaya.id</a></i>
+                            </li>
+                        </ol>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <form action="" method="post">
+                        {{ csrf_field() }}
+                        {{ method_field('delete') }}
+                        <p>
+                            {{-- <button type="submit" class="btn btn-danger btn-flat btn-sm menu-sidebar">Ok, Hapus</button> --}}
+                            <button type="button" class="btn btn-link text-white ml-auto"
+                                data-dismiss="modal">Close</button>
+                        </p>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+@endsection

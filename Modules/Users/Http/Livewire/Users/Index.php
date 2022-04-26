@@ -25,9 +25,7 @@ class Index extends Component
     }
 
     public function updatingSearch()
-
     {
-
         $this->resetPage();
     }
 
