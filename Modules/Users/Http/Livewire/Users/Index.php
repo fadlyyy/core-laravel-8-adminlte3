@@ -45,13 +45,7 @@ class Index extends Component
             if ($dt->is_paten == 1) {
                 $this->emit('pesanGagal', 'Sorry, this user can not edited..');
             } else {
-                if ($dt->is_active == 1) {
-                    $dt->is_active = 0;
-                    $dt->save();
-                } else {
-                    $dt->is_active = 1;
-                    $dt->save();
-                }
+                updateStatus(new User, $id);
 
                 $this->emit('pesanSukses', 'Sucess..');
             }
