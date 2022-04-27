@@ -7,6 +7,18 @@ Jangan lupa untuk mengunjungi blog ku
 
 - [sangcahaya.id](https://sangcahaya.id)
 
+## Featured
+
+- Laravel 8, integrated with adminLTE 3
+- Sudah tersedia fitur Manage Users, Roles, & Permissions..
+- Terintasll Livewire
+- Terinstall Nwidart Module
+- Terinstall Livewire Module
+- DomPDF
+- MaatWebsite Excel
+- Milon/Barcode
+- Intervention Image
+
 ## Requirement
 
 - php >= v.7.4
@@ -14,6 +26,8 @@ Jangan lupa untuk mengunjungi blog ku
 ## Instalation Setup
 
 - Clone
+- composer install
+- cp .env.example .env
 - Create Database & Configure your .env
 - php artisan migrate
 - php artisan db:seed --class=UserSeeder
