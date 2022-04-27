@@ -32,6 +32,12 @@ Jangan lupa untuk mengunjungi blog ku
 - php artisan migrate
 - php artisan db:seed --class=UserSeeder
 - php artisan db:seed --class=RoleSeeder
+- php artisan key:generate
+
+## Demo
+
+- email : admin@sangcahaya.id
+- password : sangcahaya.id
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
