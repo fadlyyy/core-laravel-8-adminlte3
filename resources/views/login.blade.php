@@ -2,133 +2,95 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Login &mdash; Stisla</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Log in (v2)</title>
 
-    <!-- General CSS Files -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-    <!-- CSS Libraries -->
-    {{-- <link rel="stylesheet" href="../node_modules/bootstrap-social/bootstrap-social.css"> --}}
-
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head>
 
-<body>
-    <div id="app">
-        <section class="section">
-            <div class="container mt-5">
-                <div class="row">
-                    <div
-                        class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-                        <div class="login-brand">
-                            <img src="{{ asset('assets/img/stisla-fill.svg') }}" alt="logo" width="100"
-                                class="shadow-light rounded-circle">
-                        </div>
+<body class="hold-transition login-page">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card card-outline card-primary">
+            <div class="card-header text-center">
+                <a href="{{ url('/') }}" class="h1"><b>Admin</b>LTE</a>
+            </div>
+            <div class="card-body">
+                <p class="login-box-msg">Sign in to start your session</p>
 
-                        <div class="card card-primary">
-                            <div class="card-header">
-                                <h4>Login</h4>
+                <form action="{{ url('login') }}" method="post">
+                    @csrf
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
                             </div>
-
-                            <div class="card-body">
-                                <form method="POST" action="{{ url('login') }}" class="needs-validation" novalidate="">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email" tabindex="1"
-                                            required autofocus>
-                                        <div class="invalid-feedback">
-                                            Please fill in your email
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="d-block">
-                                            <label for="password" class="control-label">Password</label>
-                                            <div class="float-right">
-                                                <a href="auth-forgot-password.html" class="text-small">
-                                                    {{-- Forgot Password? --}}
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <input id="password" type="password" class="form-control" name="password"
-                                            tabindex="2" required>
-                                        <div class="invalid-feedback">
-                                            please fill in your password
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" name="remember" class="custom-control-input"
-                                                tabindex="3" id="remember-me">
-                                            <label class="custom-control-label" for="remember-me">Remember Me</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                                            Login
-                                        </button>
-                                    </div>
-                                </form>
-                                <div class="text-center mt-4 mb-3">
-                                    <div class="text-job text-muted">Login With Social</div>
-                                </div>
-                                <div class="row sm-gutters">
-                                    <div class="col-6">
-                                        <a class="btn btn-block btn-social btn-facebook">
-                                            <span class="fab fa-facebook"></span> Facebook
-                                        </a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a class="btn btn-block btn-social btn-twitter">
-                                            <span class="fab fa-twitter"></span> Twitter
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        {{-- <div class="mt-5 text-muted text-center">
-                            Don't have an account? <a href="auth-register.html">Create One</a>
-                        </div> --}}
-                        <div class="simple-footer">
-                            Copyright &copy; Stisla 2018
                         </div>
                     </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember" name="remember">
+                                <label for="remember">
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+
+                <div class="social-auth-links text-center mt-2 mb-3">
+                    <a href="#" class="btn btn-block btn-primary">
+                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+                    </a>
                 </div>
+                <!-- /.social-auth-links -->
+
+                <p class="mb-1">
+                    <a href="forgot-password.html">I forgot my password</a>
+                </p>
+                <p class="mb-0">
+                    <a href="register.html" class="text-center">Register a new membership</a>
+                </p>
             </div>
-        </section>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
     </div>
+    <!-- /.login-box -->
 
-    <!-- General JS Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="../assets/js/stisla.js"></script>
-
-    <!-- JS Libraies -->
-
-    <!-- Template JS File -->
-    <script src="{{ asset('assets/js/scripts.js') }}"></script>
-    <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-    <!-- Page Specific JS File -->
+    <!-- jQuery -->
+    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 </body>
 
 </html>
