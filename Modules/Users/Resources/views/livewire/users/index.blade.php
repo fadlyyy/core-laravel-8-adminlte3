@@ -3,11 +3,13 @@
     <div class="card">
         <div class="card-header">
             {{-- <h4>Simple Table</h4> --}}
-            <div class="buttons float-right">
-                <a wire:click.prevent="tambah_data" href="#" class="btn btn-icon icon-left btn-primary"><i
-                        class="bi bi-clipboard-plus"></i>
-                    Add Data</a>
-            </div>
+            @if (akses('create-user'))
+                <div class="buttons float-right">
+                    <a wire:click.prevent="tambah_data" href="#" class="btn btn-icon icon-left btn-primary"><i
+                            class="bi bi-clipboard-plus"></i>
+                        Add Data</a>
+                </div>
+            @endif
         </div>
         <div class="card-body">
 
@@ -53,15 +55,18 @@
                                 <td>{{ $dt->name }}</td>
                                 <td>{{ $dt->email }}</td>
                                 <td>
-                                    @if ($dt->is_active == 1)
-                                        <div style="cursor: pointer;"
-                                            wire:click.prevent="update_status({{ $dt->id }})"
-                                            class="badge badge-success">Active</div>
-                                    @else
-                                        <div style="cursor: pointer;"
-                                            wire:click.prevent="update_status({{ $dt->id }})"
-                                            class="badge badge-danger">Not Active</div>
+                                    @if (akses('edit-user'))
+                                        @if ($dt->is_active == 1)
+                                            <div style="cursor: pointer;"
+                                                wire:click.prevent="update_status({{ $dt->id }})"
+                                                class="badge badge-success">Active</div>
+                                        @else
+                                            <div style="cursor: pointer;"
+                                                wire:click.prevent="update_status({{ $dt->id }})"
+                                                class="badge badge-danger">Not Active</div>
+                                        @endif
                                     @endif
+
                                     <img wire:loading wire:target="update_status" src="{{ asset('loading-bar.gif') }}"
                                         alt="">
                                 </td>
@@ -74,15 +79,20 @@
                                             </button>
                                             <div class="dropdown-menu" x-placement="bottom-start"
                                                 style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                <a class="dropdown-item has-icon" href="#"
-                                                    wire:click.prevent="edit_data({{ $dt->id }})"><i
-                                                        class="bi bi-pencil-square"></i>
-                                                    Edit</a>
-                                                <a class="dropdown-item has-icon"
-                                                    onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
-                                                    href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
-                                                        class="bi bi-trash3"></i>
-                                                    Delete</a>
+                                                @if (akses('edit-user'))
+                                                    <a class="dropdown-item has-icon" href="#"
+                                                        wire:click.prevent="edit_data({{ $dt->id }})"><i
+                                                            class="bi bi-pencil-square"></i>
+                                                        Edit</a>
+                                                @endif
+
+                                                @if (akses('delete-user'))
+                                                    <a class="dropdown-item has-icon"
+                                                        onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
+                                                        href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
+                                                            class="bi bi-trash3"></i>
+                                                        Delete</a>
+                                                @endif
                                             </div>
                                         </div>
                                     @endif

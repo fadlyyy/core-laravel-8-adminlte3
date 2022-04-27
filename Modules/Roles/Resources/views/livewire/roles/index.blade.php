@@ -2,11 +2,13 @@
     <div class="card">
         <div class="card-header">
             {{-- <h3 class="card-title">Bordered Table</h3> --}}
-            <div class="buttons float-right">
-                <a wire:click.prevent="tambah_data" href="#" class="btn btn-icon icon-left btn-primary"><i
-                        class="bi bi-clipboard-plus"></i>
-                    Add Data</a>
-            </div>
+            @if (akses('create-role'))
+                <div class="buttons float-right">
+                    <a wire:click.prevent="tambah_data" href="#" class="btn btn-icon icon-left btn-primary"><i
+                            class="bi bi-clipboard-plus"></i>
+                        Add Data</a>
+                </div>
+            @endif
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -26,19 +28,23 @@
                             <td>{{ $e + 1 }}.</td>
                             <td>{{ $dt->name }}</td>
                             <td>
-                                <button wire:click.prevent="manage_permission({{ $dt->id }})" type="button"
-                                    class="btn btn-block btn-outline-primary btn-flat">Manage
-                                    Permissions</button>
+                                @if (akses('manage-permissions'))
+                                    <button wire:click.prevent="manage_permission({{ $dt->id }})" type="button"
+                                        class="btn btn-block btn-outline-primary btn-flat">Manage
+                                        Permissions</button>
+                                @endif
                             </td>
                             <td>
-                                @if ($dt->is_active == 1)
-                                    <div style="cursor: pointer;"
-                                        wire:click.prevent="update_status({{ $dt->id }})"
-                                        class="badge badge-success">Active</div>
-                                @else
-                                    <div style="cursor: pointer;"
-                                        wire:click.prevent="update_status({{ $dt->id }})"
-                                        class="badge badge-danger">Not Active</div>
+                                @if (akses('edit-role'))
+                                    @if ($dt->is_active == 1)
+                                        <div style="cursor: pointer;"
+                                            wire:click.prevent="update_status({{ $dt->id }})"
+                                            class="badge badge-success">Active</div>
+                                    @else
+                                        <div style="cursor: pointer;"
+                                            wire:click.prevent="update_status({{ $dt->id }})"
+                                            class="badge badge-danger">Not Active</div>
+                                    @endif
                                 @endif
                                 <img wire:loading wire:target="update_status({{ $dt->id }})"
                                     src="{{ asset('loading-bar.gif') }}" alt="">
@@ -52,15 +58,20 @@
                                         </button>
                                         <div class="dropdown-menu" x-placement="bottom-start"
                                             style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                            <a class="dropdown-item has-icon" href="#"
-                                                wire:click.prevent="edit_data({{ $dt->id }})"><i
-                                                    class="bi bi-pencil-square"></i>
-                                                Edit</a>
-                                            <a class="dropdown-item has-icon"
-                                                onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
-                                                href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
-                                                    class="bi bi-trash3"></i>
-                                                Delete</a>
+                                            @if (akses('edit-role'))
+                                                <a class="dropdown-item has-icon" href="#"
+                                                    wire:click.prevent="edit_data({{ $dt->id }})"><i
+                                                        class="bi bi-pencil-square"></i>
+                                                    Edit</a>
+                                            @endif
+
+                                            @if (akses('delete-role'))
+                                                <a class="dropdown-item has-icon"
+                                                    onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
+                                                    href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
+                                                        class="bi bi-trash3"></i>
+                                                    Delete</a>
+                                            @endif
                                         </div>
                                     </div>
                                 @endif
