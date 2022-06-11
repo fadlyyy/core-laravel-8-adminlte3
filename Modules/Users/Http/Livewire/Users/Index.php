@@ -40,16 +40,21 @@ class Index extends Component
 
     public function update_status($id)
     {
+        if (!akses('change-status-user')) {
+            $this->emit('pesanGagal', 'Access Denied..');
+            return false;
+        }
+
         try {
             $dt = User::find($id);
 
-            if ($dt->is_paten == 1) {
-                $this->emit('pesanGagal', 'Sorry, this user can not edited..');
-            } else {
-                updateStatus(new User, $id);
+            // if ($dt->is_paten == 1) {
+            //     $this->emit('pesanGagal', 'Sorry, this user can not edited..');
+            // } else {
+            updateStatus(new User, $id);
 
-                $this->emit('pesanSukses', 'Sucess..');
-            }
+            $this->emit('pesanSukses', 'Sucess..');
+            // }
         } catch (\Exception $th) {
             //throw $th;
             $pesan = MasterData::pesan_gagal($th);

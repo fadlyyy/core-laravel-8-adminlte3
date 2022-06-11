@@ -71,31 +71,31 @@
                                         alt="">
                                 </td>
                                 <td>
-                                    @if ($dt->is_paten != 1)
-                                        <div class="dropdown d-inline">
-                                            <button class="btn btn-primary dropdown-toggle" type="button"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Action
-                                            </button>
-                                            <div class="dropdown-menu" x-placement="bottom-start"
-                                                style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                                @if (akses('edit-user'))
-                                                    <a class="dropdown-item has-icon" href="#"
-                                                        wire:click.prevent="edit_data({{ $dt->id }})"><i
-                                                            class="bi bi-pencil-square"></i>
-                                                        Edit</a>
-                                                @endif
+                                    {{-- @if ($dt->is_paten != 1) --}}
+                                    <div class="dropdown d-inline">
+                                        <button class="btn btn-primary dropdown-toggle" type="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" x-placement="bottom-start"
+                                            style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                            @if (akses('edit-user'))
+                                                <a class="dropdown-item has-icon" href="#"
+                                                    wire:click.prevent="edit_data({{ $dt->id }})"><i
+                                                        class="bi bi-pencil-square"></i>
+                                                    Edit</a>
+                                            @endif
 
-                                                @if (akses('delete-user'))
-                                                    <a class="dropdown-item has-icon"
-                                                        onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
-                                                        href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
-                                                            class="bi bi-trash3"></i>
-                                                        Delete</a>
-                                                @endif
-                                            </div>
+                                            @if (akses('delete-user'))
+                                                <a class="dropdown-item has-icon"
+                                                    onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
+                                                    href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
+                                                        class="bi bi-trash3"></i>
+                                                    Delete</a>
+                                            @endif
                                         </div>
-                                    @endif
+                                    </div>
+                                    {{-- @endif --}}
                                 </td>
                             </tr>
                         @endforeach

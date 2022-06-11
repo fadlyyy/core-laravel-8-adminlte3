@@ -23,6 +23,10 @@ trait PermissionTrait
                 'type' => 'manage-user',
                 'title' => 'delete-user'
             ],
+            [
+                'type' => 'manage-user',
+                'title' => 'change-status-user'
+            ],
 
 
 
