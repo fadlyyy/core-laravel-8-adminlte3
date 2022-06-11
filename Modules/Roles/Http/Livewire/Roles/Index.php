@@ -5,6 +5,7 @@ namespace Modules\Roles\Http\Livewire\Roles;
 use Livewire\Component;
 use App\Traits\MasterData;
 use Modules\Roles\Entities\Role;
+use Illuminate\Support\Facades\DB;
 use Modules\Roles\Http\Traits\RoleTrait;
 
 class Index extends Component
@@ -27,11 +28,11 @@ class Index extends Component
         $this->permissions = $this->getAllTitlePermissions();
         $this->permissions = $this->getPermissionById($id);
 
-        $dt = Role::find($id);
-        if ($dt->is_paten == 1) {
-            $this->emit('pesanGagal', 'Sorry.. forbidden..');
-            return false;
-        }
+        // $dt = Role::find($id);
+        // if ($dt->is_paten == 1) {
+        //     $this->emit('pesanGagal', 'Sorry.. forbidden..');
+        //     return false;
+        // }
 
         $this->id_edit = $id;
         $this->emit('modalManage', 'show');
@@ -39,13 +40,22 @@ class Index extends Component
 
     public function store_manage()
     {
+        if (!akses('manage-permissions')) {
+            $this->emit('pesanGagal', 'Access Denied..');
+            return false;
+        }
+
         try {
+            DB::beginTransaction();
+
             $this->storeManage($this->id_edit, $this->permissions);
 
             $this->emit('modalManage', 'hide');
             $this->reset(['id_edit']);
             $this->emit('pesanSukses', 'Success..');
+            DB::commit();
         } catch (\Exception $th) {
+            DB::rollBack();
             //throw $th;
             $pesan = MasterData::pesan_gagal($th);
             $this->emit('pesanGagal', $pesan);
@@ -54,15 +64,19 @@ class Index extends Component
 
     public function update_status($id)
     {
+        if (!akses('change-status-role')) {
+            $this->emit('pesanGagal', 'Access Denied..');
+            return false;
+        }
         //
         try {
             $dt = Role::find($id);
-            if ($dt->is_paten == 1) {
-                $this->emit('pesanGagal', 'Sorry.. this role cannot change status..');
-            } else {
-                updateStatus(new Role, $id);
-                $this->emit('pesanSukses', 'Success..');
-            }
+            // if ($dt->is_paten == 1) {
+            //     $this->emit('pesanGagal', 'Sorry.. this role cannot change status..');
+            // } else {
+            updateStatus(new Role, $id);
+            $this->emit('pesanSukses', 'Success..');
+            // }
         } catch (\Exception $th) {
             //throw $th;
             $pesan = MasterData::pesan_gagal($th);

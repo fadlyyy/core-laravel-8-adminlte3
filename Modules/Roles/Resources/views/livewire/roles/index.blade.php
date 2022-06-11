@@ -28,11 +28,11 @@
                             <td>{{ $e + 1 }}.</td>
                             <td>{{ $dt->name }}</td>
                             <td>
-                                @if (akses('manage-permissions'))
-                                    <button wire:click.prevent="manage_permission({{ $dt->id }})" type="button"
-                                        class="btn btn-block btn-outline-primary btn-flat">Manage
-                                        Permissions</button>
-                                @endif
+                                {{-- @if (akses('manage-permissions')) --}}
+                                <button wire:click.prevent="manage_permission({{ $dt->id }})" type="button"
+                                    class="btn btn-block btn-outline-primary btn-flat">Manage
+                                    Permissions</button>
+                                {{-- @endif --}}
                             </td>
                             <td>
                                 @if (akses('edit-role'))
@@ -50,31 +50,31 @@
                                     src="{{ asset('loading-bar.gif') }}" alt="">
                             </td>
                             <td>
-                                @if ($dt->is_paten != 1)
-                                    <div class="dropdown d-inline">
-                                        <button class="btn btn-primary dropdown-toggle" type="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Action
-                                        </button>
-                                        <div class="dropdown-menu" x-placement="bottom-start"
-                                            style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                            @if (akses('edit-role'))
-                                                <a class="dropdown-item has-icon" href="#"
-                                                    wire:click.prevent="edit_data({{ $dt->id }})"><i
-                                                        class="bi bi-pencil-square"></i>
-                                                    Edit</a>
-                                            @endif
+                                {{-- @if ($dt->is_paten != 1) --}}
+                                <div class="dropdown d-inline">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu" x-placement="bottom-start"
+                                        style="position: absolute; transform: translate3d(0px, 28px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        @if (akses('edit-role'))
+                                            <a class="dropdown-item has-icon" href="#"
+                                                wire:click.prevent="edit_data({{ $dt->id }})"><i
+                                                    class="bi bi-pencil-square"></i>
+                                                Edit</a>
+                                        @endif
 
-                                            @if (akses('delete-role'))
-                                                <a class="dropdown-item has-icon"
-                                                    onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
-                                                    href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
-                                                        class="bi bi-trash3"></i>
-                                                    Delete</a>
-                                            @endif
-                                        </div>
+                                        @if (akses('delete-role'))
+                                            <a class="dropdown-item has-icon"
+                                                onclick="return confirm('Confirm delete?') || event.stopImmediatePropagation()"
+                                                href="#" wire:click.prevent="destroy({{ $dt->id }})"><i
+                                                    class="bi bi-trash3"></i>
+                                                Delete</a>
+                                        @endif
                                     </div>
-                                @endif
+                                </div>
+                                {{-- @endif --}}
                             </td>
                         </tr>
                     @endforeach

@@ -50,6 +50,10 @@ trait PermissionTrait
                 'type' => 'manage-role',
                 'title' => 'delete-role'
             ],
+            [
+                'type' => 'manage-role',
+                'title' => 'change-status-role'
+            ],
         ]);
     }
 }
